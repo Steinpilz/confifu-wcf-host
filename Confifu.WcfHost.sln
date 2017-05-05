@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4389E532-B1D7-4DAB-8F2C-43925F61D51D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitlab-ci.yml = .gitlab-ci.yml
+		build.bat = build.bat
+		scripts\build.fsx = scripts\build.fsx
+		paket.dependencies = paket.dependencies
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{0456B48D-6752-4AD7-98C5-6FF97A48567E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confifu.WcfHost", "src\app\Confifu.WcfHost\Confifu.WcfHost.csproj", "{87E56511-30B6-4B30-A443-14D99C8F7427}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87E56511-30B6-4B30-A443-14D99C8F7427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E56511-30B6-4B30-A443-14D99C8F7427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E56511-30B6-4B30-A443-14D99C8F7427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E56511-30B6-4B30-A443-14D99C8F7427}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
