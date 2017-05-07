@@ -1,4 +1,4 @@
-# Fria2.WcfHost
+# Confifu.WcfHost
 
 ## Introduction
 {TODO: Short description of the repository goes here}
@@ -9,10 +9,10 @@
 
 ## Questions & Issues
 
-Use built-in gitlab [issue tracker]({TODO: repository link}/issues)
+({TODO: repository link}/issues)
 
 ## Maintainers
-@{TODO: Maintaner gitlab user name}
+@{TODO: Maintaner github user name}
 
 ## Contribution
 
