@@ -2,10 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net451</TargetFramework>
+    <Company>Steinpilz</Company>
+    <Authors>Yury Filipovich</Authors>
+    <Description>Short way to use wcf hosting for development</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Confifu.Abstractions" Version="2.1.2" />
+    <PackageReference Include="Confifu.Abstractions.Logging" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

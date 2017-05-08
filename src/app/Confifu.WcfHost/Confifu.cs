@@ -1,4 +1,6 @@
 ﻿using Confifu.Abstractions;
+using Confifu.Logging.Abstractions;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,14 +27,14 @@ namespace Confifu.WcfHost
 
     public static class DefaultSettings
     {
-        public static ServiceMetadataBehavior Behavior1() => new ServiceMetadataBehavior()
+        public static ServiceMetadataBehavior Behavior() => new ServiceMetadataBehavior()
         {
             HttpGetEnabled = true,
             MetadataExporter = { PolicyVersion = PolicyVersion.Policy15 }
         };
 
 
-        public static Binding Binding1() => new WSHttpBinding
+        public static Binding Binding() => new WSHttpBinding
         {
             Security = new WSHttpSecurity
             {
@@ -62,9 +64,9 @@ namespace Confifu.WcfHost
         public static IAppConfig UseWcfHost(
             this IAppConfig appConfig, WcfHostParams @params)
         {
-            appConfig.WrapAppRunner(runner => () =>
+            appConfig.AddAppRunnerAfter(() =>
                {
-                   runner();
+                   var logger = appConfig.GetLogger("");
 
                    try
                    {
@@ -72,20 +74,21 @@ namespace Confifu.WcfHost
                        {
                            var host = new ServiceHost(service.Implementation, new Uri(@params.BaseAddress + service.Name));
 
-                           host.Description.Behaviors.Add(service.Behavior ?? DefaultSettings.Behavior1());
+                           logger.LogDebug($"Starting ServiceHost at {@params.BaseAddress + service.Name}");
+
+                           host.Description.Behaviors.Add(service.Behavior ?? DefaultSettings.Behavior());
 
                            var debug = host.Description.Behaviors.OfType<ServiceDebugBehavior>().First();
                            debug.IncludeExceptionDetailInFaults = true;
 
-                           host.AddServiceEndpoint(service.Interface, service.Binding ?? DefaultSettings.Binding1(), "");
+                           host.AddServiceEndpoint(service.Interface, service.Binding ?? DefaultSettings.Binding(), "");
 
                            host.Open();
-                            // _app.Disposables.Add(host);
-                        }
+                       }
                    }
                    catch (Exception ex)
                    {
-                       Console.WriteLine(ex);
+                       logger.LogDebug(ex.ToString());
                    }
                });
             return appConfig;
