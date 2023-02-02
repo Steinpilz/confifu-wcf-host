@@ -5,6 +5,7 @@
     <Company>Steinpilz</Company>
     <Authors>Yury Filipovich</Authors>
     <Description>Short way to use wcf hosting for development</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
